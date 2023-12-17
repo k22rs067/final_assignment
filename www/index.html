@@ -50,8 +50,26 @@
                 })
         }
 
-        function sortData() {
+        function sort1Data() {
             UTdata.order(key,true).fetchAll()
+                .then(function(results) {
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        msg += results[i].get(key) + "<br>";
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("text-light");
+                    $("#display").addClass("bg-primary");
+                    $("#display").html(msg);
+                })
+                .catch(function(error) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("delete fail:" + JSON.stringify(error));
+                })
+        }
+        function sort2Data() {
+            UTdata.order(key,false).fetchAll()
                 .then(function(results) {
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
@@ -130,8 +148,8 @@
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
-        <a onclick="sortData()" class="btn btn-outline-secondary" role="button">昇順</a>
-        <a onclick="sortData()" class="btn btn-outline-secondary" role="button">降順</a><br>
+        <a onclick="sort1Data()" class="btn btn-outline-secondary" role="button">降順</a>
+        <a onclick="sort2Data()" class="btn btn-outline-secondary" role="button">昇順</a><br>
         <a onclick="countData()" class="btn btn-outline-secondary" role="button">偶数</a>
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">奇数</a>
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">素数</a>        
