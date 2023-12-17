@@ -87,12 +87,19 @@
                 })
         }
 
-        function primenumberData() {
-            UTdata.count().fetchAll()
+        function evennumber() {
+            UTdata.fetchAll()
                 .then(function(results) {
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        let number = results[i].get(key);
+                        if (number % 2 == 0){
+                            msg += number + "<br>";
+                        }
+                    }
                     $("#display").removeClass();
                     $("#display").addClass("bg-success");
-                    $("#display").html(results.count);
+                    $("#display").html(msg);
                 })
                 .catch(function(error) {
                     $("#display").removeClass();
@@ -150,7 +157,7 @@
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
         <a onclick="sort1Data()" class="btn btn-outline-secondary" role="button">降順</a>
         <a onclick="sort2Data()" class="btn btn-outline-secondary" role="button">昇順</a><br>
-        <a onclick="countData()" class="btn btn-outline-secondary" role="button">偶数</a>
+        <a onclick="evennumber()" class="btn btn-outline-secondary" role="button">偶数</a>
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">奇数</a>
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">素数</a>        
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>    
