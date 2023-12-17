@@ -11,7 +11,7 @@
     <script src="keys.js"></script>
     <script>
         let ncmb = new NCMB(appKey, clientKey);
-        let UTdata = ncmb.DataStore("UpdateTest");
+        let UTdata = ncmb.DataStore("Primenumber");
         let key = "score";
 
         function enterData() {
@@ -69,7 +69,7 @@
                 })
         }
 
-        function countData() {
+        function primenumberData() {
             UTdata.count().fetchAll()
                 .then(function(results) {
                     $("#display").removeClass();
@@ -125,14 +125,17 @@
 <body>
     <h1 class="text-light bg-secondary">mbaas update</h1>
     <div>
-        <input type="text" id="data" placeholder="スコア">
-        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+        <input type="text" id="data" placeholder="number">
+        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Search</a>
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
-        <a onclick="sortData()" class="btn btn-outline-secondary" role="button">Sort</a>
-        <a onclick="countData()" class="btn btn-outline-secondary" role="button">Count</a>
-        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>
+        <a onclick="sortData()" class="btn btn-outline-secondary" role="button">昇順</a>
+        <a onclick="sortData()" class="btn btn-outline-secondary" role="button">降順</a><br>
+        <a onclick="countData()" class="btn btn-outline-secondary" role="button">偶数</a>
+        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">奇数</a>
+        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">素数</a>        
+        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>    
     </div>
     <div>
         <input type="text" id="update" placeholder="更新">
