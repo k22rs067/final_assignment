@@ -108,20 +108,57 @@
                 })
         }
 
-        function deleteData() {
-            UTdata.fetch()
+        function oddnumber() {
+            UTdata.fetchAll()
                 .then(function(results) {
-                    return results.delete();
-                })
-                .then(function(results){
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        let number = results[i].get(key);
+                        if (number % 2 != 0){
+                            msg += number + "<br>";
+                        }
+                    }
                     $("#display").removeClass();
                     $("#display").addClass("bg-success");
-                    $("#display").html("delete success");
+                    $("#display").html(msg);
                 })
-                .catch(function(error){
+                .catch(function(error) {
                     $("#display").removeClass();
                     $("#display").addClass("bg-warning");
-                    $("#display").html("delete fail:" + JSON.stringify(error));                    
+                    $("#display").html("delete fail:" + JSON.stringify(error));
+                })
+        }
+
+        function isPrime(num) {
+            if (num <= 1){
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(num); i++){
+                if (num % i == 0){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function primenumber() {
+            UTdata.fetchAll()
+                .then(function(results) {
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        let number = results[i].get(key);
+                        if (isPrime(number)){
+                            msg += number + "<br>";
+                        }
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html(msg);
+                })
+                .catch(function(error) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("delete fail:" + JSON.stringify(error));
                 })
         }
 
@@ -158,8 +195,8 @@
         <a onclick="sort1Data()" class="btn btn-outline-secondary" role="button">降順</a>
         <a onclick="sort2Data()" class="btn btn-outline-secondary" role="button">昇順</a><br>
         <a onclick="evennumber()" class="btn btn-outline-secondary" role="button">偶数</a>
-        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">奇数</a>
-        <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">素数</a>        
+        <a onclick="oddnumber()" class="btn btn-outline-secondary" role="buton">奇数</a>
+        <a onclick="primenumber()" class="btn btn-outline-secondary" role="buton">素数</a>        
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>    
     </div>
     <div>
