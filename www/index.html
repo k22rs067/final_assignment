@@ -11,10 +11,10 @@
     <script src="keys.js"></script>
     <script>
         let ncmb = new NCMB(appKey, clientKey);
-        let UTdata = ncmb.DataStore("Primenumber");
-        let key = "score";
+        let UTdata = ncmb.DataStore("numbersearch");
+        let key = "number";
 
-        function enterData() {
+        function searchData() {
             let uTdata = new UTdata();
             let value = parseInt($("#data").val());
             uTdata.set(key, value)
@@ -126,7 +126,7 @@
     <h1 class="text-light bg-secondary">mbaas update</h1>
     <div>
         <input type="text" id="data" placeholder="number">
-        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Search</a>
+        <a onclick="searchData()" class="btn btn-outline-secondary" role="button">Enter</a>
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
