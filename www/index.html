@@ -177,6 +177,27 @@
                     $("#display").addClass("bg-warning");
                     $("#display").html("delete fail:" + JSON.stringify(error));                    
                 })
+        }
+
+        function multiples() {
+            UTdata.fetchAll()
+                .then(function(results) {
+                    let msg = "";
+                    for (let i = 0; i < results.length; i++) {
+                        let number = results[i].get(key);
+                        if (number % 5 == 0){
+                            msg += number + "<br>";
+                        }
+                    }
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html(msg);
+                })
+                .catch(function(error) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("delete fail:" + JSON.stringify(error));
+                })
         }        
 
         function updateData() {
@@ -202,7 +223,7 @@
 </head>
 
 <body>
-    <h1 class="text-light bg-secondary">mbaas update</h1>
+    <h1 class="text-light bg-secondary">final report</h1>
     <div>
         <input type="text" id="data" placeholder="number">
         <a onclick="searchData()" class="btn btn-outline-secondary" role="button">Enter</a>
@@ -213,7 +234,8 @@
         <a onclick="sort2Data()" class="btn btn-outline-secondary" role="button">昇順</a><br>
         <a onclick="evennumber()" class="btn btn-outline-secondary" role="button">偶数</a>
         <a onclick="oddnumber()" class="btn btn-outline-secondary" role="buton">奇数</a>
-        <a onclick="primenumber()" class="btn btn-outline-secondary" role="buton">素数</a>        
+        <a onclick="primenumber()" class="btn btn-outline-secondary" role="buton">素数</a>
+        <a onclick="multiples()" class="btn btn-outline-secondary" role="buton">5の倍数</a>         
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>    
     </div>
     <div>
