@@ -185,7 +185,7 @@
                     let msg = "";
                     for (let i = 0; i < results.length; i++) {
                         let number = results[i].get(key);
-                        if (number % 5 == 0){
+                        if (number %  parseInt( $("#minute").val()) == 0){
                             msg += number + "<br>";
                         }
                     }
@@ -235,7 +235,8 @@
         <a onclick="evennumber()" class="btn btn-outline-secondary" role="button">偶数</a>
         <a onclick="oddnumber()" class="btn btn-outline-secondary" role="buton">奇数</a>
         <a onclick="primenumber()" class="btn btn-outline-secondary" role="buton">素数</a>
-        <a onclick="multiples()" class="btn btn-outline-secondary" role="buton">5の倍数</a>         
+        <input type="number" id="multiple" value=3 >
+        <a onclick="multiples()" class="btn btn-outline-secondary" role="buton">----の倍数</a>         
         <a onclick="deleteData()" class="btn btn-outline-secondary" role="buton">Delete</a>    
     </div>
     <div>
